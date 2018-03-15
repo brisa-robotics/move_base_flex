@@ -1,0 +1,12 @@
+#Plan to be refined considering possible obstacles along the path
+nav_msgs/Path plan
+
+# If the goal is obstructed, how many meters the planner can
+# relax the constraint in x and y before failing.
+float32 tolerance
+---
+#Refined plan
+nav_msgs/Path refined_plan
+
+#True if refining the given plan was possible, otherwise False
+bool success

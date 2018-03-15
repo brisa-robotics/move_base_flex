@@ -18,6 +18,7 @@ add_service_files(
   FILES
   CheckPoint.srv
   CheckPose.srv
+  RefinePlan.srv
   CheckPath.srv
 )
 
