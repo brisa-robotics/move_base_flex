@@ -72,6 +72,8 @@ CostmapNavigationServer::CostmapNavigationServer(const TFPtr &tf_listener_ptr) :
                                                        &CostmapNavigationServer::callServiceCheckPointCost, this);
   check_pose_cost_srv_ = private_nh_.advertiseService("check_pose_cost",
                                                       &CostmapNavigationServer::callServiceCheckPoseCost, this);
+  refine_plan_srv_ = private_nh_.advertiseService("refine_plan",
+                                                  &CostmapNavigationServer::callServiceRefinePlan, this);
   check_path_cost_srv_ = private_nh_.advertiseService("check_path_cost",
                                                       &CostmapNavigationServer::callServiceCheckPathCost, this);
   clear_costmaps_srv_ = private_nh_.advertiseService("clear_costmaps",

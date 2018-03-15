@@ -58,6 +58,7 @@
 #include "mbf_costmap_nav/costmap_recovery_execution.h"
 #include "mbf_costmap_nav/costmap_wrapper.h"
 
+#include <mbf_msgs/RefinePlan.h>
 
 namespace mbf_costmap_nav
 {
@@ -207,6 +208,8 @@ private:
    * @param response Response object, see the mbf_msgs/CheckPath service definition file.
    * @return true, if the service completed successfully, false otherwise
    */
+  bool callServiceRefinePlan(mbf_msgs::RefinePlan::Request &request,
+                             mbf_msgs::RefinePlan::Response &response);
   bool callServiceCheckPathCost(mbf_msgs::CheckPath::Request &request,
                                 mbf_msgs::CheckPath::Response &response);
 
