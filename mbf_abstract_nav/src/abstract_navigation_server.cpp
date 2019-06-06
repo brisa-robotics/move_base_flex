@@ -41,6 +41,7 @@
 #include <nav_msgs/Path.h>
 
 #include "mbf_abstract_nav/abstract_navigation_server.h"
+#include <mbf_msgs/SwitchController.h>
 
 namespace mbf_abstract_nav
 {
@@ -104,6 +105,8 @@ AbstractNavigationServer::AbstractNavigationServer(const TFPtr &tf_listener_ptr)
       boost::bind(&mbf_abstract_nav::AbstractNavigationServer::cancelActionMoveBase, this, _1),
       false));
 
+   switch_controller_srv_ = private_nh_.advertiseService("switch_controller",
+  &mbf_abstract_nav::AbstractNavigationServer::callServiceSwitchController, this);
   // XXX note that we don't start a dynamic reconfigure server, to avoid colliding with the one possibly created by
   // the base class. If none, it should call startDynamicReconfigureServer method to start the one defined here for
   // providing just the abstract server parameters
@@ -377,6 +380,13 @@ void AbstractNavigationServer::stop(){
   controller_action_.cancelAll();
   recovery_action_.cancelAll();
   move_base_action_.cancel();
+}
+
+bool AbstractNavigationServer::callServiceSwitchController(mbf_msgs::SwitchController::Request &request,
+                                                    mbf_msgs::SwitchController::Response &response)
+{
+  response.success = moving_ptr_->switchController(request.controller_name);
+  return true;
 }
 
 } /* namespace mbf_abstract_nav */

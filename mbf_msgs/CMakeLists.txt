@@ -19,6 +19,7 @@ add_service_files(
   CheckPoint.srv
   CheckPose.srv
   RefinePlan.srv
+  SwitchController.srv
   CheckPath.srv
 )
 

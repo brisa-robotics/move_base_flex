@@ -51,6 +51,7 @@
 #include <geometry_msgs/PoseStamped.h>
 
 #include <mbf_utility/navigation_utility.h>
+#include <mbf_msgs/SwitchController.h>
 
 #include "mbf_abstract_nav/abstract_plugin_manager.h"
 #include "mbf_abstract_nav/abstract_planner_execution.h"
@@ -268,6 +269,9 @@ typedef boost::shared_ptr<dynamic_reconfigure::Server<mbf_abstract_nav::MoveBase
      *        @ref controller_execution "Controller", and the @ref recovery_execution "Recovery Behavior".
      */
     virtual void initializeServerComponents();
+
+    virtual bool callServiceSwitchController(mbf_msgs::SwitchController::Request &request,
+                                             mbf_msgs::SwitchController::Response &response);
 
   protected:
 
